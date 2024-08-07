@@ -1,29 +1,35 @@
-// Add App 
+//app create
 const express = require("express");
+const cors = require('cors');
 const app = express();
 
-// Add Port
+// access environment variables 
 require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 
-// Add Middleware
+//adding middleware
 app.use(express.json());
-const fileupload = require("express-fileupload");
-app.use(fileupload());
+app.use(cors());
 
-// Database Connection
+const fileupload = require("express-fileupload");
+app.use(fileupload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}));
+
+// connecting to DB
 const db = require("./config/database");
 db.connect();
 
-// Cloudinary Connection
+// connecting to Cloudinary
 const cloudinary = require("./config/cloudinary");
-cloudinary.cloudinaryconnect(); // Ensure this matches the actual function name
+cloudinary.cloudinaryConnect();
 
-// Routes
-const upload = require("./routes/FileUpload");
-app.use("/api/v1/upload", upload); // Added leading slash
+// Mounting Routes
+const Upload = require("./routes/FileUpload");
+app.use('/api/v1/upload', Upload);
 
-// Start the Server
+// Activating Server
 app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`);
-});
+    console.log(`App is running at PORT ${PORT}`);
+})

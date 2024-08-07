@@ -1,21 +1,23 @@
 {
-  "name": "file-upload",
+  "name": "fileupload",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "cloudinary": "^2.4.0",
-    "dotenv": "^16.4.5",
+    "cloudinary": "^1.36.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.19.2",
-    "express-fileupload": "^1.5.1",
-    "mongoose": "^8.5.2",
-    "nodemon": "^3.1.4"
+    "express-fileupload": "^1.4.0",
+    "mongoose": "^7.1.0",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.22"
   }
 }
